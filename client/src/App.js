@@ -1,6 +1,6 @@
 
 import './App.css';
-import ListingContainer from './ListingContainer';
+import Header from './Header'
 
 function App() {
 
@@ -16,9 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
-      <Header/>
+      <Header />
       <ListingContainer listings={listings} setListings={setListings}/>
     </div>
   );
