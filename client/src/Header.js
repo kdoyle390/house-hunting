@@ -4,18 +4,23 @@ import Favorites from './Favorites';
 import Login from './Login';
 import CreateAccount from './CreateAccount';
 
-// add state and a button that says "Create account" when click the create account component toggles
+
 function Header() {
     const [isShown, setIsShown] = useState(false)
+    const [logIn, setLogIn] = useState(false)
 
-
+    function handleCreateAccount (e) {
+        e.preventDefault();
+        console.log("handle create account function ran")
+    }
 
     return(
         <div className='header'>
             Header
-            <Login />
+            <button id="log-in" onClick={(e)=> setLogIn(!logIn)}>Log In</button>
+            {logIn ? (<Login />) : null }
             <button id="create-account" onClick={(e)=> setIsShown(!isShown)}>Create Account</button>
-            {isShown ? (<CreateAccount />) : null }
+            {isShown ? (<CreateAccount handleCreateAccount={handleCreateAccount} />) : null }
             <Search />
             <Favorites />
             
