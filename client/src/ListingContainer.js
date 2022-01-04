@@ -1,23 +1,60 @@
-import ListingCard from './ListingCard'
-import { useState, useEffect } from 'react'
 
-function ListingContainer () {
+import React, { useState, useEffect } from 'react';
+import ListingCard from "./ListingCard"
+
+
+function ListingContainer(){
 
     const [listings, setListings] = useState([])
 
-    useEffect( () => {
-      fetch(`http://localhost:6001/houses`)
+
+    useEffect(() => {
+        fetch(`http://localhost:6001/listings`)
+
         .then(resp => resp.json())
-        .then(data => setListings(data));
-    },[])
+        .then((listings) => {
+            setListings(listings)
+        })
+    }, [])
 
-    const showListings = listings.map(listing => <ListingCard listing={listing} setListings={setListings}/>)
+    // const filteredListings = listings.filter(listing => {
+    //     return listing.//(whatever we want to search by).toLowerCase().includes(search.toLowerCase())
+    // });
 
-    return(
+
+    const renderListings = listings.map(listings => {
+        return <ListingCard key={listings.id} listings={listings}/>
+    })
+
+    return (
         <div>
-            {showListings}
+            {renderListings}
+{showListings}
+
         </div>
     )
 }
 
 export default ListingContainer;
+
+
+
+
+
+
+// function ListingContainer () {
+
+//     const [listings, setListings] = useState([])
+
+//     useEffect( () => {
+//       fetch(`http://localhost:6001/results`)
+//         .then(resp => resp.json())
+//         .then(data => setListings(data));
+//     },[])
+
+//     return(
+//         <ListingCard listings={listings} setListings={setListings}/>
+//     )
+// }
+
+// export default ListingContainer;
