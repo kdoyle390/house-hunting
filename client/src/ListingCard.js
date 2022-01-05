@@ -1,3 +1,4 @@
+
 //import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 
@@ -35,3 +36,4 @@ const ListingStyle = styled.div`
   box-shadow: 10px 10px lightblue;
   background: white;
 `;
+

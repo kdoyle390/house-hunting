@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import ListingCard from "./ListingCard"
 
@@ -8,7 +9,8 @@ function ListingContainer(){
 
 
     useEffect(() => {
-        fetch(`http://localhost:6001/houses`)
+        fetch(`http://localhost:6001/listings`)
+
         .then(resp => resp.json())
         .then((listings) => {
             setListings(listings)
@@ -27,6 +29,8 @@ function ListingContainer(){
     return (
         <div>
             {renderListings}
+{showListings}
+
         </div>
     )
 }
