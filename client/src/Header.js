@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Search from './Search';
-import Favorites from './Favorites';
+import ViewFavorites from './ViewFavorites';
 import Login from './Login';
 import CreateAccount from './CreateAccount';
 
@@ -22,7 +22,7 @@ function Header() {
             <button id="create-account" onClick={(e)=> setIsShown(!isShown)}>Create Account</button>
             {isShown ? (<CreateAccount handleCreateAccount={handleCreateAccount} />) : null }
             <Search />
-            <Favorites />
+            <ViewFavorites />
             
         </div>
 

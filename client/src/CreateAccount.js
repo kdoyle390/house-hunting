@@ -1,5 +1,7 @@
 
 function CreateAccount({handleCreateAccount}) {
+
+//add code to confirm passwords match - on backend with validations?
     return(
         <form onSubmit={handleCreateAccount}>
             <input type="text" placeholder="First Name" onChange={(e) => console.log(e.target.value)}></input>
