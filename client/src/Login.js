@@ -8,6 +8,7 @@ function onLogin() {
 
 const [username, setUsername] = useState("");
 
+// do we need to add the password to the below function and then validate on the backend?
 function handleSubmit(e) {
   e.preventDefault();
   fetch("/login", {
