@@ -9,10 +9,7 @@ function Header() {
     const [isShown, setIsShown] = useState(false)
     const [logIn, setLogIn] = useState(false)
 
-    function handleCreateAccount (e) {
-        e.preventDefault();
-        console.log("handle create account function ran")
-    }
+ 
 
     return(
         <div className='header'>
@@ -20,7 +17,7 @@ function Header() {
             <button id="log-in" onClick={(e)=> setLogIn(!logIn)}>Log In</button>
             {logIn ? (<Login />) : null }
             <button id="create-account" onClick={(e)=> setIsShown(!isShown)}>Create Account</button>
-            {isShown ? (<CreateAccount handleCreateAccount={handleCreateAccount} />) : null }
+            {isShown ? (<CreateAccount />) : null }
             <Search />
             <ViewFavorites />
             

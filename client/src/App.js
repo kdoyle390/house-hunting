@@ -7,19 +7,27 @@ import ListingContainer from './ListingContainer'
 
 function App() {
 
+  const [user, setUser] = useState(null);
 
-  // const [listings, setListings] = useState([])
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
+  // if (user) {
+  //   return <h2>Welcome, {user.username}!</h2>;
+  // } else {
+  //   return <Login onLogin={setUser} />;
+  // }
 
-  // useEffect( () => {
-  //   fetch(`http://localhost:6001/listings`)
-  //     .then(resp => resp.json())
-  //     .then(data => setListings(data));
-  // })
 
   return(
     <div className="App">
       <Header />
+      
       <ListingContainer />
      
 

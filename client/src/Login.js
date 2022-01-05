@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
 function Login() {
-//pass down an onLogin function - but from where?
+//pass down an onLogin function - but from where? onLogin need to handle saving the logged in user's details in state
+const [loggedInUser, setLoggedInUser] = useState("")
 function onLogin() {
     console.log("onLogin function ran")
 }
@@ -9,6 +10,7 @@ function onLogin() {
 const [username, setUsername] = useState("");
 
 // do we need to add the password to the below function and then validate on the backend?
+
 function handleSubmit(e) {
   e.preventDefault();
   fetch("/login", {
