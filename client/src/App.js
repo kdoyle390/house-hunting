@@ -7,6 +7,13 @@ import ListingContainer from './ListingContainer'
 
 function App() {
 
+  const [search, setSearch] = useState("")
+
+  function handleSearch(newSearch){
+    console.log(newSearch)
+    setSearch(newSearch)
+  }
+
 
   // const [listings, setListings] = useState([])
 
@@ -19,8 +26,8 @@ function App() {
 
   return(
     <div className="App">
-      <Header />
-      <ListingContainer />
+      <Header search={search} onSearch={handleSearch}/>
+      <ListingContainer search={search}/>
      
 
     </div>
