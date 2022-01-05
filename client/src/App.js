@@ -11,19 +11,20 @@ function App() {
   // const [listings, setListings] = useState([])
 
 
-  useEffect( () => {
-    fetch(`http://localhost:6001/listings`)
-      .then(resp => resp.json())
-      .then(data => setListings(data));
+  // useEffect( () => {
+  //   fetch(`http://localhost:6001/listings`)
+  //     .then(resp => resp.json())
+  //     .then(data => setListings(data));
+  // })
 
-  return (
+  return(
     <div className="App">
-
-      {/* <ListingContainer listings={listings} setListings={setListings}/> */}
-      <ListingContainer/>
+      <Header />
+      <ListingContainer />
+     
 
     </div>
-  );
+  )
 }
 
 export default App;

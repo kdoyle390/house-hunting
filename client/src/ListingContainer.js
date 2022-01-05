@@ -14,6 +14,7 @@ function ListingContainer(){
         .then(resp => resp.json())
         .then((listings) => {
             setListings(listings)
+            console.log(listings)
         })
     }, [])
 
@@ -29,7 +30,6 @@ function ListingContainer(){
     return (
         <div>
             {renderListings}
-{showListings}
 
         </div>
     )
