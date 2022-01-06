@@ -12,5 +12,11 @@
     
     "start": "react-scripts start",
     "server": "json-server --watch db.json -p 6001"
+<<<<<<< Updated upstream
+=======
+  },
+  "dependencies": {
+    "react-router-dom": "^5.3.0"
+>>>>>>> Stashed changes
   }
 }
