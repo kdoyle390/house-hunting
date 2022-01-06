@@ -2,7 +2,8 @@ import { useState } from 'react';
 import Search from './Search';
 import ViewFavorites from './ViewFavorites';
 import Login from './Login';
-import CreateAccount from './CreateAccount';
+import ManageAccount from './ManageAccount'
+
 
 import 'bootstrap/dist/css/bootstrap.css';
 import {Navbar, Nav, Container} from 'react-bootstrap'
@@ -11,7 +12,7 @@ import Img from './img/logo.png'
 
 
 function Header({ search, onSearch }) {
-    const [isShown, setIsShown] = useState(false)
+    // const [isShown, setIsShown] = useState(false)
     const [logIn, setLogIn] = useState(false)
 
     function handleCreateAccount (e) {
@@ -45,6 +46,7 @@ function Header({ search, onSearch }) {
       Flat Iron House Finder</Navbar.Brand>
   <Nav className="me-auto">
     <Nav.Link href="/">Home</Nav.Link>
+    <Nav.Link href="/account">Manage Account</Nav.Link>
     <Nav.Link href="/listing/new/my-list">See All Listings</Nav.Link>
     <Nav.Link href="/listing/new/create-listing">Create Listing</Nav.Link>
     <Nav.Link href="/listing/new/my-favorites">Favorited Listings</Nav.Link>

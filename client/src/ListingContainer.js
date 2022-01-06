@@ -31,6 +31,15 @@ function ListingContainer({ search }){
         return <ListingCard key={listings.id} listings={listings}/>
     })
 
+    function handleFavorites(listingToAdd) {
+        const favoriteToAdd = listings.find(
+            (listing) => listing.id === listingToAdd.id
+        );
+        if (!favoriteToAdd) {
+            setListings([...setListings, listingToAdd])
+        }
+    }
+
     return (
      
 

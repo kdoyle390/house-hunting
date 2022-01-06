@@ -1,22 +1,25 @@
 
 import {useState, useEffect } from 'react'
-
+import { Route } from 'react-router-dom'
 import './App.css';
 import Header from './Header'
 import ListingContainer from './ListingContainer'
-import CreateListing from './CreateListing';
 import Footer from './Footer';
+import ManageAccount from './ManageAccount';
+
+
 
 
 function App() {
 
   const [search, setSearch] = useState("")
+  
+
 
   function handleSearch(newSearch){
     console.log(newSearch)
     setSearch(newSearch)
   }
-
 
   // const [listings, setListings] = useState([])
 
@@ -31,6 +34,9 @@ function App() {
     <div className="App">
       <Header search={search} onSearch={handleSearch}/>
       <ListingContainer search={search}/>
+      <Route path="/account">
+      <ManageAccount />
+      </Route>
       <Footer />
 
     </div>
