@@ -266,41 +266,9 @@
       "id": 1,
       "first_name": "testUser",
       "last_name": "testUser",
-      "email": "test_user@gmail.com",
+      "username": "test_user@gmail.com",
       "password": "test1234",
       "confirm_password": "test1234"
-    },
-    {
-      "first_name": "Kelsey",
-      "last_name": "Doyle",
-      "email": "kdoyle390@gmail.com",
-      "password": "test12345",
-      "confirm_password": "test12345",
-      "id": 2
-    },
-    {
-      "first_name": "Kelsey",
-      "last_name": "Doyle",
-      "email": "kdoyle390@gmail.com",
-      "password": "test234",
-      "confirm_password": "test234",
-      "id": 3
-    },
-    {
-      "first_name": "Sian",
-      "last_name": "Mancha",
-      "email": "smancha@domain.edu",
-      "password": "lsdk",
-      "confirm_password": "lsdk",
-      "id": 4
-    },
-    {
-      "first_name": "Michael",
-      "last_name": "Fleck",
-      "email": "mfleck@domain.edu",
-      "password": "test1233",
-      "confirm_password": "test1233",
-      "id": 5
     }
   ]
 }
