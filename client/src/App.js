@@ -4,6 +4,9 @@ import {useState, useEffect } from 'react'
 import './App.css';
 import Header from './Header'
 import ListingContainer from './ListingContainer'
+import CreateListing from './CreateListing';
+import Footer from './Footer';
+
 
 function App() {
 
@@ -28,7 +31,7 @@ function App() {
     <div className="App">
       <Header search={search} onSearch={handleSearch}/>
       <ListingContainer search={search}/>
-     
+      <Footer />
 
     </div>
   )
