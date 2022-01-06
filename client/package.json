@@ -23,12 +23,7 @@
     "start": "PORT=4000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-<<<<<<< Updated upstream
     "eject": "react-scripts eject"
-=======
-    "eject": "react-scripts eject",
-    "server": "json-server --watch db.json -p 6001"
->>>>>>> Stashed changes
   },
   "eslintConfig": {
     "extends": [
