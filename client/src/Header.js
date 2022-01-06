@@ -5,7 +5,7 @@ import Login from './Login';
 import CreateAccount from './CreateAccount';
 
 
-function Header() {
+function Header({ search, onSearch }) {
     const [isShown, setIsShown] = useState(false)
     const [logIn, setLogIn] = useState(false)
 
@@ -21,7 +21,7 @@ function Header() {
             {logIn ? (<Login />) : null }
             <button id="create-account" onClick={(e)=> setIsShown(!isShown)}>Create Account</button>
             {isShown ? (<CreateAccount handleCreateAccount={handleCreateAccount} />) : null }
-            <Search />
+            <Search search={search} onSearch={onSearch}/>
             <ViewFavorites />
             
         </div>

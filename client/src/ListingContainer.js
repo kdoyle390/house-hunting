@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ListingCard from "./ListingCard"
 
 
-function ListingContainer(){
+function ListingContainer({ search }){
 
     const [listings, setListings] = useState([])
 
@@ -18,12 +18,12 @@ function ListingContainer(){
         })
     }, [])
 
-    // const filteredListings = listings.filter(listing => {
-    //     return listing.//(whatever we want to search by).toLowerCase().includes(search.toLowerCase())
-    // });
+    const filteredListings = listings.filter(listing => {
+        return listing.city.toLowerCase().includes(search.toLowerCase())
+    });
 
 
-    const renderListings = listings.map(listings => {
+    const renderListings = filteredListings.map(listings => {
         return <ListingCard key={listings.id} listings={listings}/>
     })
 
