@@ -6,23 +6,27 @@ function CreateListing() {
 
     const [houseData, setHouseData] = useState({
         address: "",
-        Sq_ft: "",
-        image_url: '',
+        city: "",
+        state: "",
+        Square_feet: "",
+        house_img: '',
+        num_beds: "",
+        num_baths: "",
         rent: "",
         // user_id: loginId
     })
 
-    const [isSelected, setIsSelected] = useState(false)
+    // const [isSelected, setIsSelected] = useState(false)
 
-    const handleNewListingClick = () => {
-        setIsSelected(true)
-    }
+    // const handleNewListingClick = () => {
+    //     setIsSelected(true)
+    // }
 
     const handlePost = (e) => {
         e.preventDefault()
         console.log(houseData)
         
-        fetch('http://localhost:9292/', {
+        fetch('http://localhost:6001/listings', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(houseData),
@@ -30,7 +34,7 @@ function CreateListing() {
         .then(resp => resp.json())
         .then(data => console.log(data))
 
-        setIsSelected(false)
+        // setIsSelected(false)
         window.location.reload(false)
         
     }
@@ -44,15 +48,14 @@ function CreateListing() {
 
     return (
         <div>
-        {isSelected ? 
             <FormStyle>
             <form className="post-form" onSubmit={handlePost}>
             <h2>List Your Home!</h2>
             <label>
-                Address:
+                Street Address:
                 <input
                 type="text"
-                id="header"
+                id="address"
                 placeholder=""
                 value={houseData.address}
                 onChange={(e) => handleChange(e)}
@@ -60,11 +63,55 @@ function CreateListing() {
                 />
             </label>
             <label>
-                Sq ft:
-                <textarea
-                id="description"
+                City:
+                <input
+                type="text"
+                id="city"
                 placeholder=""
-                value={houseData.sq_ft}
+                value={houseData.city}
+                onChange={(e) => handleChange(e)}
+                required
+                />
+            </label>
+            <label>
+                State:
+                <input
+                type="text"
+                id="state"
+                placeholder=""
+                value={houseData.state}
+                onChange={(e) => handleChange(e)}
+                required
+                />
+            </label>
+            <label>
+                Number of Bedrooms:
+                <input
+                type="text"
+                id="num_beds"
+                placeholder=""
+                value={houseData.num_beds}
+                onChange={(e) => handleChange(e)}
+                required
+                />
+            </label>
+            <label>
+                Number of Bathrooms:
+                <input
+                type="text"
+                id="num_baths"
+                placeholder=""
+                value={houseData.num_baths}
+                onChange={(e) => handleChange(e)}
+                required
+                />
+            </label>
+            <label>
+                Sq ft:
+                <input
+                id="square_feet"
+                placeholder=""
+                value={houseData.square_feet}
                 onChange={(e) => handleChange(e)}
                 required
                 />
@@ -73,9 +120,9 @@ function CreateListing() {
                 Post Image:
                 <input
                 type="text"
-                id="image_url"
+                id="house_img"
                 placeholder=""
-                value={houseData.image_url}
+                value={houseData.house_img}
                 onChange={(e) => handleChange(e)}
                 required
                 />
@@ -84,22 +131,16 @@ function CreateListing() {
                 Rent:
                 <input
                 type="text"
-                id="content_link"
+                id="rent"
                 placeholder=""
                 value={houseData.rent}
                 onChange={(e) => handleChange(e)}
                 required
                 />
             </label>
-            <button type="submit">Post!</button>
+            <button type="submit" style={{display: 'flex'}}>List!</button>
             </form>
             </FormStyle>
-        :
-        <ButtonStyle>
-            <button onClick={handleNewListingClick}>List your home!</button>
-        </ButtonStyle>
-        
-        }
         </div>
     )
 }
@@ -117,7 +158,7 @@ justify-content: center;
     }
     form {
         width: 20%;
-        margin: 10px;
+        margin: 30px;
         padding: 5px;
         border-radius: 5px;
         background-color: aqua;
@@ -128,13 +169,14 @@ justify-content: center;
     label {
         font-size: 16px;
         justify-content: left;
+        width: 200px;
     }
     textarea {
         resize: none;
         display: block;
         margin: auto;
-        width: 90%;
-        height: 20px;
+        width: 92%;
+        height: 30px;
         font-family: arial;
         border-radius: 5px;
         position: relative;
@@ -153,7 +195,7 @@ justify-content: center;
         border-radius: 5px;
         font-size: 12px;
         text-shadow: none;
-        height: 20px;
+        height: 30px;
         background-color: white;
         padding: 5px;
     }

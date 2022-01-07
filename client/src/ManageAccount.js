@@ -26,13 +26,14 @@ function handleLogout() {
     
     return(
         <div>
-           <p> Manage Account page</p>
+           <h3> Manage Account</h3>
 
-           
+           <p> Create  an Account</p>
            <CreateAccount />
-           <Route path="/login">
+           <h3>Or Login Below</h3>
+           {/* <Route path="/login"> */}
             <Login />
-            </Route>
+            {/* </Route> */}
         </div>
     )
 }
