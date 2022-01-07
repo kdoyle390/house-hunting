@@ -1,10 +1,17 @@
 import { useState } from 'react'
 import ViewFavorites from './ViewFavorites'
+import ListingCard from './ListingCard';
 
-function FavoritesListings() {
+function FavoritesListings( {listings, toggleFavorite} ) {
+
+    const filteredListings = listings.filter(({ favorite }) => favorite)
+
     return(
-        <div>render user's favorites</div>
-
+        <div>
+        {
+            filteredListings.map(listing => <ListingCard key={listing.id} listing={listing} onFavorite={toggleFavorite}/>)
+        }
+        </div>
     )
 
 }

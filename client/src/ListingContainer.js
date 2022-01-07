@@ -57,7 +57,7 @@ function ListingContainer({ search }){
             </Route>
 
             <Route path="/listing/new/my-favorites">
-                <FavoritesListings/>
+                <FavoritesListings listings={listings} toggleFavorite={toggleFavorite}/>
             </Route>
 
             <Route path="/listing/new/create-listing">
