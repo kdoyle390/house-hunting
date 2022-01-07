@@ -1,33 +1,37 @@
 import { useState } from 'react'
 import styled from "styled-components";
 
-function Login({handleLogin}) {
+function Login({user, setUser, users}) {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const myUser = users.find((thisUser) => thisUser.username === email);
+    if (myUser) {
+      if(myUser.password === password) {
+        setUser(myUser);
+      }
+    }
+    console.log(myUser) 
+    console.log(email)
+    console.error("Login failed");  
+    
+  }
 
 // do we need to add the password to the below function and then validate on the backend?
-const [email, setEmail] = useState("");
-function handleSubmit(e) {
-  e.preventDefault();
-  fetch("http://127.0.0.1:3000/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email }),
-  })
-    .then((r) => r.json())
-    .then((user) => handleLogin(user));
-}
-    return(
-        <div>
-          <FormStyle >
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                <input type="text" placeholder="Password"onChange={(e) => e.target.value}></input>
-                <button type ="submit">Login</button>
-            </form>
-          </FormStyle>
-        </div>
-    )
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  if (user) return null;
+  return(
+    <div>
+      <FormStyle >
+        <form onSubmit={handleSubmit}>
+            <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+            <input type="text" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
+            <button type ="submit">Login</button>
+        </form>
+      </FormStyle>
+    </div>
+  )
 
 }
 

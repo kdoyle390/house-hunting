@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled from "styled-components";
 
-function CreateAccount({handleCreateAccount}) {
+function CreateAccount({user, setUser, setUsers}) {
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -38,14 +38,21 @@ function handleSubmit(e) {
       body: JSON.stringify(newUserData),
     })
       .then((r) => r.json())
-      .then((user) => handleCreateAccount(user));
+      .then((user) => { setUser(user) })
+      .then(() => {
+          fetch("http://localhost:6001/users")
+      })
+      .then((res) => res.json())
+      .then((users) => setUsers(users));
            
   }
 
+    if (user) return null;
 
 
     return(
         <div>
+            <h2> Create  an Account</h2>
             <FormStyle>
                 <form onSubmit={handleSubmit} className="">
                     <input type="text" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)} value={firstName}></input>

@@ -259,6 +259,18 @@
       "num_beds": "4",
       "num_baths": "2",
       "house_img": "https://ar.rdcpix.com/ddee0fd5f1b231ba83ac1333d1acb88fl-f2122316880od-w1024_h768.webp"
+    },
+    {
+      "address": "919 Gillette Street",
+      "city": "Houston",
+      "state": "TEXAS",
+      "Square_feet": "",
+      "house_img": "222",
+      "num_beds": "2",
+      "num_baths": "2",
+      "rent": "22",
+      "square_feet": "22",
+      "id": 21
     }
   ],
   "users": [

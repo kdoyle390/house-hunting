@@ -12,7 +12,15 @@ import ManageAccount from './ManageAccount';
 
 function App() {
 
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
+  const [user, setUser] = useState(null);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:6001/users")
+      .then((res) => res.json())
+      .then((newUsers) => {setUsers(newUsers)})
+  }, [])
   
 
 
@@ -21,21 +29,12 @@ function App() {
     setSearch(newSearch)
   }
 
-  // const [listings, setListings] = useState([])
-
-
-  // useEffect( () => {
-  //   fetch(`http://localhost:6001/listings`)
-  //     .then(resp => resp.json())
-  //     .then(data => setListings(data));
-  // })
-
   return(
     <div className="App">
-      <Header search={search} onSearch={handleSearch}/>
+      <Header user={user} search={search} onSearch={handleSearch}/>
       <ListingContainer search={search}/>
       <Route path="/account">
-      <ManageAccount />
+        <ManageAccount users={users} setUsers={setUsers} user={user} setUser={setUser} />
       </Route>
       <Footer />
 
