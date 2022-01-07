@@ -3,12 +3,20 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 
 
-function ListingCard({ listings: { id, address, house_img, rent, city, state, square_feet, num_beds, num_baths } }) {
+function ListingCard({ listings: { id, address, house_img, rent, city, state, square_feet, num_beds, num_baths }, handleDeletedListing }) {
   const [favorite, setFavorite] = useState(false)
 
   // function handleClick(){
   //   onFavoriteClick()
   // }
+
+  function handleDeleteClick() {
+    fetch(`http://localhost:6001/listings/${id}`, {
+        method: "DELETE",
+    })
+    .then(res => res.json())
+    .then(() => handleDeletedListing(id))
+}
 
   return (
     <ListingStyle>
@@ -23,12 +31,18 @@ function ListingCard({ listings: { id, address, house_img, rent, city, state, sq
           <h5>Rent: ${rent}/month</h5>
         </div>
       </div>
+      <div>
         {favorite ? (
           <button onClick={() => {setFavorite(!favorite)}} className="emoji-button favorite active">★</button>
         ) : (
           <button onClick={() => {setFavorite(!favorite)}} className="emoji-button favorite">☆</button>
         )}
+      </div>
+      <div>
+        <button className="deleteButton" onClick={handleDeleteClick}>Delete</button>
     </div>
+    </div>
+    
     </ListingStyle>
   );
 }

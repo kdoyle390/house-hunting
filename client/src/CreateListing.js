@@ -117,7 +117,7 @@ function CreateListing() {
                 />
             </label>
             <label>
-                Post Image:
+                Image Link:
                 <input
                 type="text"
                 id="house_img"

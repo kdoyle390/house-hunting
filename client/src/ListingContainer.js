@@ -28,9 +28,7 @@ function ListingContainer({ search }){
     });
 
 
-    const renderListings = filteredListings.map(listings => {
-        return <ListingCard key={listings.id} listings={listings} handleDeletedListing={handleDeletedListing}/>
-    })
+    
 
     function handleFavorites(listingToAdd) {
         const favoriteToAdd = listings.find(
@@ -45,6 +43,10 @@ function ListingContainer({ search }){
         const updatedListings = myListings.filter((listing) => listing.id !== id)
         setMyListings(updatedListings)
     }
+
+    const renderListings = filteredListings.map(listings => {
+        return <ListingCard key={listings.id} listings={listings} handleDeletedListing={handleDeletedListing}/>
+    })
 
     return (
      
