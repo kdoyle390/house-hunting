@@ -36,7 +36,7 @@ function App() {
       <Route path="/account">
         <ManageAccount users={users} setUsers={setUsers} user={user} setUser={setUser} />
       </Route>
-      <Footer />
+      {/* <Footer /> */}
 
     </div>
   )

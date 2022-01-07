@@ -38,9 +38,8 @@ function Header({ search, onSearch, user }) {
           />
               Flat Iron House Finder</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link onClick={() => history.push("/")} >Home</Nav.Link>
+            <Nav.Link onClick={() => history.push("/listing/new/my-list")} >Home</Nav.Link>
             <Nav.Link onClick={() => history.push("/account")}>Manage Account</Nav.Link>
-            <Nav.Link onClick={() => history.push("/listing/new/my-list")}>See All Listings</Nav.Link>
             <Nav.Link onClick={() => history.push("/listing/new/create-listing")}>Create Listing</Nav.Link>
             <Nav.Link onClick={() => history.push("/listing/new/my-favorites")}>Favorited Listings</Nav.Link>
           </Nav>
