@@ -12,7 +12,11 @@ function CreateAccount({handleCreateAccount}) {
 //add code to confirm passwords match - on backend with validations?
 // add functionality to handleCreateAccount that renders a modal that says "Account successfully created. Please Log In, with an "Okay" button to close Modal?
     function handleCreateAccount (e) {
-        console.log("handle create account function ran")
+        setFirstName("")
+        setLastName("")
+        setEmail("")
+        setPassword("")
+        setConfirmPassword("")
     }
 
 // accounts are being created and posted to the db.json file no need to render

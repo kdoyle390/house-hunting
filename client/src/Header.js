@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom'
 import Search from './Search';
 import ViewFavorites from './ViewFavorites';
 import Login from './Login';
@@ -14,6 +15,7 @@ import Img from './img/logo.png'
 function Header({ search, onSearch }) {
     // const [isShown, setIsShown] = useState(false)
     const [logIn, setLogIn] = useState(false)
+    const history = useHistory();
 
     function handleCreateAccount (e) {
         e.preventDefault();
@@ -45,11 +47,11 @@ function Header({ search, onSearch }) {
   />{' '}
       Flat Iron House Finder</Navbar.Brand>
   <Nav className="me-auto">
-    <Nav.Link href="/">Home</Nav.Link>
-    <Nav.Link href="/account">Manage Account</Nav.Link>
-    <Nav.Link href="/listing/new/my-list">See All Listings</Nav.Link>
-    <Nav.Link href="/listing/new/create-listing">Create Listing</Nav.Link>
-    <Nav.Link href="/listing/new/my-favorites">Favorited Listings</Nav.Link>
+    <Nav.Link onClick={() => history.push("/")} >Home</Nav.Link>
+    <Nav.Link onClick={() => history.push("/account")}>Manage Account</Nav.Link>
+    <Nav.Link onClick={() => history.push("/listing/new/my-list")}>See All Listings</Nav.Link>
+    <Nav.Link onClick={() => history.push("/listing/new/create-listing")}>Create Listing</Nav.Link>
+    <Nav.Link onClick={() => history.push("/listing/new/my-favorites")}>Favorited Listings</Nav.Link>
   </Nav>
   </Container>
 </Navbar>

@@ -10,7 +10,7 @@ import CreateListing from './CreateListing';
 function ListingContainer({ search }){
 
     const [listings, setListings] = useState([])
-    const [myListings, setMyListings] = useState([])
+    console.log(listings)
 
 
     useEffect(() => {
@@ -19,7 +19,6 @@ function ListingContainer({ search }){
         .then(resp => resp.json())
         .then((listings) => {
             setListings(listings)
-            console.log(listings)
         })
     }, [])
 
@@ -28,39 +27,42 @@ function ListingContainer({ search }){
     });
 
 
-    
-
-    function handleFavorites(listingToAdd) {
-        const favoriteToAdd = listings.find(
-            (listing) => listing.id === listingToAdd.id
-        );
-        if (!favoriteToAdd) {
-            setListings([...setListings, listingToAdd])
-        }
+    function toggleFavorite(listingToAdd) {
+        setListings((listings) => {
+            const listingIndex = listings.findIndex(
+                (listing) => 
+                    listing.id === listingToAdd.id
+            );
+            return [
+                ...listings.slice(0, listingIndex),
+                {
+                    ...listingToAdd,
+                    favorite: !listingToAdd.favorite,
+                },
+                ...listings.slice(listingIndex + 1)
+            ]
+        })
     }
 
     function handleDeletedListing(id) {
-        const updatedListings = myListings.filter((listing) => listing.id !== id)
-        setMyListings(updatedListings)
+        setListings((listings) => listings.filter((listing) => listing.id !== id))
     }
 
-    const renderListings = filteredListings.map(listings => {
-        return <ListingCard key={listings.id} listings={listings} handleDeletedListing={handleDeletedListing}/>
-    })
 
     return (
      
 
         <div id="Listings">
-            <BrowserRouter>
             <Switch>
             
             <Route path="/listing/new/my-list">
-            {renderListings}
+            {
+                filteredListings.map(listing => <ListingCard key={listing.id} listing={listing} onFavorite={toggleFavorite} handleDeletedListing={handleDeletedListing}/>)
+            }
             </Route>
 
             <Route path="/listing/new/my-favorites">
-                <FavoritesListings/>
+                <FavoritesListings listings={listings} toggleFavorite={toggleFavorite}/>
             </Route>
 
             <Route path="/listing/new/create-listing">
@@ -68,7 +70,6 @@ function ListingContainer({ search }){
             </Route>
 
             </Switch>
-            </BrowserRouter>
         </div>
 
 
