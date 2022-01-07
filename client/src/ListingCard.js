@@ -3,8 +3,12 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 
 
-function ListingCard({ listings: { address, house_img, rent, city, state, square_feet, num_beds, num_baths } }) {
+function ListingCard({ listings: { id, address, house_img, rent, city, state, square_feet, num_beds, num_baths } }) {
   const [favorite, setFavorite] = useState(false)
+
+  // function handleClick(){
+  //   onFavoriteClick()
+  // }
 
   return (
     <ListingStyle>

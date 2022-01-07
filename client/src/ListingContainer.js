@@ -10,6 +10,7 @@ import CreateListing from './CreateListing';
 function ListingContainer({ search }){
 
     const [listings, setListings] = useState([])
+    const [myListings, setMyListings] = useState([])
 
 
     useEffect(() => {
@@ -28,7 +29,7 @@ function ListingContainer({ search }){
 
 
     const renderListings = filteredListings.map(listings => {
-        return <ListingCard key={listings.id} listings={listings}/>
+        return <ListingCard key={listings.id} listings={listings} handleDeletedListing={handleDeletedListing}/>
     })
 
     function handleFavorites(listingToAdd) {
@@ -38,6 +39,11 @@ function ListingContainer({ search }){
         if (!favoriteToAdd) {
             setListings([...setListings, listingToAdd])
         }
+    }
+
+    function handleDeletedListing(id) {
+        const updatedListings = myListings.filter((listing) => listing.id !== id)
+        setMyListings(updatedListings)
     }
 
     return (
