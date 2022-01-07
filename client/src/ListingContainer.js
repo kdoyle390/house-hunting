@@ -10,6 +10,7 @@ import CreateListing from './CreateListing';
 function ListingContainer({ search }){
 
     const [listings, setListings] = useState([])
+    console.log(listings)
 
 
     useEffect(() => {
@@ -18,7 +19,6 @@ function ListingContainer({ search }){
         .then(resp => resp.json())
         .then((listings) => {
             setListings(listings)
-            console.log(listings)
         })
     }, [])
 
@@ -27,28 +27,33 @@ function ListingContainer({ search }){
     });
 
 
-    const renderListings = filteredListings.map(listings => {
-        return <ListingCard key={listings.id} listings={listings}/>
-    })
-
-    function handleFavorites(listingToAdd) {
-        const favoriteToAdd = listings.find(
-            (listing) => listing.id === listingToAdd.id
-        );
-        if (!favoriteToAdd) {
-            setListings([...setListings, listingToAdd])
-        }
+    function toggleFavorite(listingToAdd) {
+        setListings((listings) => {
+            const listingIndex = listings.findIndex(
+                (listing) => 
+                    listing.id === listingToAdd.id
+            );
+            return [
+                ...listings.slice(0, listingIndex),
+                {
+                    ...listingToAdd,
+                    favorite: !listingToAdd.favorite,
+                },
+                ...listings.slice(listingIndex + 1)
+            ]
+        })
     }
 
     return (
      
 
         <div id="Listings">
-            <BrowserRouter>
             <Switch>
             
             <Route path="/listing/new/my-list">
-            {renderListings}
+            {
+                filteredListings.map(listing => <ListingCard key={listing.id} listing={listing} onFavorite={toggleFavorite}/>)
+            }
             </Route>
 
             <Route path="/listing/new/my-favorites">
@@ -60,7 +65,6 @@ function ListingContainer({ search }){
             </Route>
 
             </Switch>
-            </BrowserRouter>
         </div>
 
 

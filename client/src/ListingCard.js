@@ -3,9 +3,8 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 
 
-function ListingCard({ listings: { address, house_img, rent, city, state, square_feet, num_beds, num_baths } }) {
-  const [favorite, setFavorite] = useState(false)
-
+function ListingCard({ listing, onFavorite}) {
+  const { favorite, address, house_img, rent, city, state, square_feet, num_beds, num_baths } = listing
   return (
     <ListingStyle>
     <div>
@@ -19,11 +18,10 @@ function ListingCard({ listings: { address, house_img, rent, city, state, square
           <h5>Rent: ${rent}/month</h5>
         </div>
       </div>
-        {favorite ? (
-          <button onClick={() => {setFavorite(!favorite)}} className="emoji-button favorite active">★</button>
-        ) : (
-          <button onClick={() => {setFavorite(!favorite)}} className="emoji-button favorite">☆</button>
-        )}
+      <button onClick={() => onFavorite(listing)} className={`emoji-button favorite ${favorite  ? "active" : ""}`}>
+        {favorite ? "★" : "☆"}
+      </button>
+       
     </div>
     </ListingStyle>
   );
