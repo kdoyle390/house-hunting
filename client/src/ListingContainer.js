@@ -44,11 +44,6 @@ function ListingContainer({ search }){
         })
     }
 
-    function handleDeletedListing(id) {
-        const updatedListings = myListings.filter((listing) => listing.id !== id)
-        setMyListings(updatedListings)
-    }
-
     return (
      
 
